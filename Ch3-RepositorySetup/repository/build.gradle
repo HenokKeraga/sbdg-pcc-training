@@ -1,0 +1,63 @@
+/***
+ * include java library plugin to expose GemFire related dependencies as transitive dependency
+ *
+ * This is a great way to link modules together when one module has a dependency on another.
+ *
+ * i.e. java-library should be used for library modules! (Makes Sense)
+ *
+ * Expose transitive dependencies through "api" declarations (only use with 'java-library'
+ */
+apply plugin: 'java-library'
+
+/***
+ * configurations for compileOnly and annotationProcessor
+ * lombok related
+ */
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+
+    /***
+     * expose spring-gemfire-starter as a transitive dependency
+     */
+    api 'org.springframework.geode:spring-gemfire-starter'
+
+    /***
+     * for GemFire version 9.7.0 or lower,
+     * include spring-boot-starter-log4j2 to avoid log4j related exceptions
+     */
+    api 'org.springframework.boot:spring-boot-starter-log4j2'
+
+    /***
+     * expose GemFire related transitive dependencies,
+     * also overriding GemFire version comes with spring-gemfire-starter
+     */
+    api 'io.pivotal.gemfire:geode-core'
+    api 'io.pivotal.gemfire:geode-wan'
+    api 'io.pivotal.gemfire:geode-lucene'
+    api 'io.pivotal.gemfire:geode-cq'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    testImplementation('org.springframework.data:spring-data-gemfire-test:0.0.13.RELEASE') {
+        exclude group: "javax.servlet", module: "javax.servlet-api"
+        exclude group: "org.apache.logging.log4j", module: "log4j-core"
+    }
+
+}
+
+test {
+    useJUnitPlatform()
+}
