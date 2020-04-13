@@ -1,0 +1,7 @@
+---
+applications:
+- name: instructor-tanzu-gemfire-client
+  memory: 2G
+  services:
+  - GemFire
+#  random-route: true

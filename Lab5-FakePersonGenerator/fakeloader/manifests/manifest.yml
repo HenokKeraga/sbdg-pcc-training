@@ -1,0 +1,7 @@
+---
+applications:
+- name: instructor-tanzu-gemfire-fakeloader
+  memory: 2G
+  services:
+  - GemFire
+#  random-route: true

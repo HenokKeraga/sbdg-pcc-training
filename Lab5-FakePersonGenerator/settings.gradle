@@ -1,0 +1,5 @@
+rootProject.name = 'cloudiopcc'
+
+include 'repository'
+include 'cacheclient'
+include 'fakeloader'
