@@ -49,7 +49,7 @@ public class FakeLoaderController {
     }
 
     /**
-     * I include this here just for testing using POST. Consideration must be made on whether
+     * I include this here just for testing using DELETE. Consideration must be made on whether
      * this is a valid POST method. In reality it is a batch operation and this doesn't lend itself
      * REST where you expect an operation on a resource. To be sure, a resource can be a collection.
      *
@@ -57,11 +57,13 @@ public class FakeLoaderController {
      * A BATCH OPERATION is not easily represented here. We could create a custom method which is a
      * bit overkill and NON standard. (Plus doesn't lend itself to built in Spring functionality)
      *
+     * I actually consider this a bulk operation as opposed to a batch one so I am going with DELETE
+     *
      * Please refer to the discussion here:
      *
      * @see <a href="https://cloud.google.com/apis/design/custom_methods"</a>
      */
-    @PostMapping("/emptyRepo")
+    @DeleteMapping("/emptyRepo")
     @ApiOperation(value = "Deletes the whole Database")
     @ResponseStatus(NO_CONTENT)
     public void emptyPersonRepo(final HttpServletResponse response) {
