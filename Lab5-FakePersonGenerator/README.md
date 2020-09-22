@@ -18,8 +18,8 @@ This application will allow you to generate fake `Person` objects into the `Pers
 This is a Gemfire Client that will operate against Gemfire (locally, or in the cloud). It has a swagger interface
  that will allow various `CRUD` operations as a demonstration of `SBDG` out of the box.
  
-Please feel free to contact me anytime vit GIT and/or connect with me at linked in via [this link here](https://www
-.linkedin.com/in/terry-trippany/) and send me a message!
+Please feel free to contact me anytime vit GIT and/or connect with me at linked in via [this link here](https://www.linkedin.com/in/terry-trippany/) and send me a message!
 
 Thank you,
 **_Terry Trippany (Trip)_**
+
